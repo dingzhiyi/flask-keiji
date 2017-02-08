@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="../static/main.css">
     <title>留言板</title>
 </head>
 <body>
@@ -27,16 +27,12 @@
     </form>
     <div class="entries-area">
         <h2>留言记录</h2>
-        <h3>游客 的留言（2014/10/31 10：00：00）：</h3>
+    {% for greeting in greeting_list %}
+        <h3>{{ greeting.name }} 的留言（{{ greeting.create_at|datetime_fmt }}）：</h3>
         <p>
-            留言内容<br>
-            留言内容
+            {{ greeting.comment|nl2br }}
         </p>
-        <h3>游客 的留言（2014/10/31 9：00：00）：</h3>
-        <p>
-            留言内容<br>
-            留言内容
-        </p>
+    {% endfor %}
     </div>
 </body>
 </html>
